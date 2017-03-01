@@ -1,19 +1,16 @@
-
 public class MyLinkedList<E> {
 
-	private Node<E> first;
-	private Node<E> last;
+	private Node<E> head;
 	private int size = 0;
 
 	/** Appends an element at the end of list */
 	public void add(E element) {
 		Node<E> newNode = new Node<E>(element, null);
-		if (last == null) {
-			first = newNode;
-			last = newNode;
+		if (head == null) {
+			head = newNode;
 		} else {
-			last.link = newNode;
-			last = newNode;
+			newNode.link = head;
+			head = newNode;
 		}
 		size++;
 	}
@@ -40,30 +37,45 @@ public class MyLinkedList<E> {
 		return data;
 	}
 
+	/** Reverse the list */
 	public void reverse() {
-		Node<E> temp = first;
-		first = last;
-		last = temp;
-
-		for (int i = 0; i < size; i++) {
-			Node<E> t1 = temp.link;
-			Node<E> t2 = t1.link;
-			t1.link = temp;
-			temp = t2.link;
-			t2.link = t1;
+		Node<E> current = head;
+		Node<E> next = null;
+		Node<E> previous = null;
+		while (current != null) {
+			next = current.link;
+			current.link = previous;
+			previous = current;
+			current = next;
 		}
+		head = previous;
 	}
 
-	/** getting a node at specified position */
+	/** Reverse recursively */
+	public void reverseRecursively() {
+		recursiveReverse(head);
+	}
+
+	private void recursiveReverse(Node<E> node) {
+		if (node.link == null) {
+			head = node;
+			return;
+		}
+		recursiveReverse(node.link);
+		Node<E> temp = node.link;
+		temp.link = node;
+		node.link = null; // This is required as when we reach last node after
+							// reverseig, its link must be net to null;
+	}
+
+	/** Getting a node at specified position */
 	private Node<E> getNode(int position) {
 		if (position > size || position < 0) {
 			throw new RuntimeException("Position is not correct");
 		} else if (position == 1) {
-			return first;
-		} else if (position == size) {
-			return last;
+			return head;
 		} else {
-			Node<E> temp = first;
+			Node<E> temp = head;
 			for (int i = 0; i < position; i++) {
 				temp = temp.link;
 			}
@@ -78,6 +90,16 @@ public class MyLinkedList<E> {
 		Node(E data, Node<E> link) {
 			this.data = data;
 			this.link = link;
+		}
+	}
+
+	public void display() {
+
+		Node<E> temp = head;
+
+		while (temp != null) {
+			System.out.println(temp.data + " ");
+			temp = temp.link;
 		}
 	}
 

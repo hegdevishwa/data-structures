@@ -1,23 +1,25 @@
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Tester {
 
 	public static void main(String[] args) {
 
-		MyLinkedList<String> list = new MyLinkedList<>();
-		list.add("a");
-		list.add("b");
-		list.add("c");
-		list.add("d");
+		MyLinkedList<String> l = new MyLinkedList<>();
 
-		System.out.println(list);
-		System.out.println(list.size());
+		l.add("a");
+		l.add("b");
+		l.add("c");
+		l.add("d");
+		l.add("e");
 
-		System.out.println(list.get(2));
-		// System.out.println(list.remove(2));
-		// System.out.println(list.get(2));
-		list.reverse();
-		System.out.println(list.get(2));
+		l.display();
+		System.out.println();
+		l.reverse();
+		l.display();
+		System.out.println();
+		l.reverseRecursively();
+		l.display();
 
 	}
 

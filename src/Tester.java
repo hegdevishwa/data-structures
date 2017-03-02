@@ -1,25 +1,16 @@
-import java.util.LinkedList;
-import java.util.Stack;
-
 public class Tester {
 
 	public static void main(String[] args) {
 
-		MyLinkedList<String> l = new MyLinkedList<>();
+		BinarySearchTree bst = new BinarySearchTree();
+		bst.insert(10);
+		bst.insert(15);
+		bst.insert(8);
+		bst.insert(25);
+		bst.insert(3);
 
-		l.add("a");
-		l.add("b");
-		l.add("c");
-		l.add("d");
-		l.add("e");
-
-		l.display();
-		System.out.println();
-		l.reverse();
-		l.display();
-		System.out.println();
-		l.reverseRecursively();
-		l.display();
+		System.out.println(bst.search(25));
+		System.out.println(bst.search(99));
 
 	}
 

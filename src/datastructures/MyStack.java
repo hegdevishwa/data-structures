@@ -2,7 +2,7 @@ package datastructures;
 
 public class MyStack<E> {
 
-	int MAX_SIZE = 1000;
+	final int MAX_SIZE = 1000;
 	Object[] s = new Object[MAX_SIZE];
 	int top = -1;
 
@@ -25,6 +25,7 @@ public class MyStack<E> {
 		} else {
 			E e = (E) s[top--];
 			return e;
+
 		}
 	}
 

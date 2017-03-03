@@ -9,8 +9,8 @@ public class BubbleSort {
 
 			for (int j = 0; j < size - i; j++) {
 
-				if (a[i] > a[i + 1]) {
-					swap(a, i, i + 1);
+				if (a[j] > a[j + 1]) {
+					swap(a, j, j + 1);
 				}
 			}
 
@@ -24,5 +24,4 @@ public class BubbleSort {
 		a[j] = temp;
 	}
 
-	
 }

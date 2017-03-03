@@ -1,10 +1,8 @@
 package sortingalgorithms;
 
-import java.util.Arrays;
-
 public class MergeSort {
 
-	private void merge(int[] left, int[] right, int[] a) {
+	private static void merge(int[] left, int[] right, int[] a) {
 		int i = 0, j = 0, k = 0;
 		int lSize = left.length;
 		int rSize = right.length;
@@ -31,16 +29,30 @@ public class MergeSort {
 		}
 	}
 
-	private void mergeSort(int[] a) {
+	private static void mergeSort(int[] a) {
 		if (a.length < 2) {
 			return;
 		}
 		int mid = a.length / 2;
 
-		int[] l = Arrays.copyOfRange(a, 0, mid);
-		int[] r = Arrays.copyOfRange(a, mid + 1, a.length);
-		
+		int[] left = new int[mid];
+		int[] right = new int[a.length - mid];
+
+		for (int i = 0; i < mid; i++) {
+			left[i] = a[i];
+		}
+		for (int j = mid; j < a.length; j++) {
+			right[j - mid] = a[j];
+
+		}
+
+		mergeSort(left);
+		mergeSort(right);
+		merge(left, right, a);
 
 	}
 
+	public static void sort(int[] a) {
+		mergeSort(a);
+	}
 }

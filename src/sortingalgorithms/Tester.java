@@ -15,6 +15,7 @@ public class Tester {
 
 		for (int i : a)
 			System.out.print(i + " ");
+		
 
 	}
 

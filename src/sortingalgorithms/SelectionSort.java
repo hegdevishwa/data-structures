@@ -18,6 +18,7 @@ public class SelectionSort {
 			a[i] = a[min];
 			a[min] = temp;
 
+			
 		}
 
 	}

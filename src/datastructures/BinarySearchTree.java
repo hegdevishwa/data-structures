@@ -1,4 +1,5 @@
 package datastructures;
+
 public class BinarySearchTree {
 
 	private Node root;

@@ -20,21 +20,39 @@ public class BinarySearchTree {
 		}
 	}
 
+	/**
+	 * Add an element to tree
+	 */
 	public void insert(int element) {
 		root = addNode(element, root);
-		System.out.println(root.data);
-		if (root.left != null) {
-			System.out.println(root.left.data);
-		}
-
-		if (root.right != null) {
-			System.out.println(root.right.data);
-		}
-
 	}
 
+	/**
+	 * Search and Element in tree
+	 */
 	public boolean search(int element) {
 		return searchNode(root, element);
+	}
+
+	/**
+	 * Search minimum value in tree
+	 */
+	public int min() {
+		return findMinValNode(root).data;
+	}
+
+	/**
+	 * Search Maximum value in tree
+	 */
+	public int max() {
+		return findMaxValNode(root).data;
+	}
+
+	/**
+	 * 
+	 */
+	public int height() {
+		return findHeight(root);
 	}
 
 	private Node addNode(int element, Node root) {
@@ -42,12 +60,9 @@ public class BinarySearchTree {
 		Node rootPtr = root;
 		if (rootPtr == null) {
 			rootPtr = new Node(element);
-			System.out.println("root");
 		} else if (rootPtr.data >= element) {
-			System.out.println("left");
 			rootPtr.left = addNode(element, rootPtr.left);
 		} else {
-			System.out.println("right");
 			rootPtr.right = addNode(element, rootPtr.right);
 		}
 		return rootPtr;
@@ -66,4 +81,38 @@ public class BinarySearchTree {
 		}
 	}
 
+	private Node findMinValNode(Node root) {
+		if (root == null) {
+			System.out.println("Error: tree is empty");
+			return null;
+		} else if (root.left == null) {
+			return root;
+		}
+		return findMinValNode(root.left);
+	}
+
+	private Node findMaxValNode(Node root) {
+		if (root == null) {
+			System.out.println("Error: tree is empty");
+			return null;
+		} else if (root.right == null) {
+			return root;
+		}
+		return findMaxValNode(root.right);
+	}
+
+	private int findHeight(Node root) {
+		if (root == null) {
+			return -1;
+		}
+		return max(findHeight(root.left), findHeight(root.right)) + 1;
+	}
+
+	private int max(int a, int b) {
+		if (a > b) {
+			return a;
+		} else {
+			return b;
+		}
+	}
 }

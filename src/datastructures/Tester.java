@@ -13,6 +13,8 @@ public class Tester {
 
 		System.out.println(bst.search(25));
 		System.out.println(bst.search(99));
+		System.out.println("Min:" + bst.min());
+		System.out.println("max:" + bst.max());
 
 	}
 

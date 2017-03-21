@@ -5,16 +5,17 @@ public class Tester {
 	public static void main(String[] args) {
 
 		BinarySearchTree bst = new BinarySearchTree();
-		bst.insert(10);
-		bst.insert(15);
-		bst.insert(8);
-		bst.insert(25);
-		bst.insert(3);
+		bst.insert(7);
+		bst.insert(4);
+		bst.insert(9);
 
-		System.out.println(bst.search(25));
-		System.out.println(bst.search(99));
-		System.out.println("Min:" + bst.min());
-		System.out.println("max:" + bst.max());
+		bst.insert(1);
+		bst.insert(6);
+
+		/*bst.insert(15);
+		bst.insert(18);*/
+
+		System.out.println("IS BST?" + bst.isBST());
 
 	}
 

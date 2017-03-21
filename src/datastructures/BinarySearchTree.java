@@ -1,5 +1,7 @@
 package datastructures;
 
+import java.util.TreeSet;
+
 public class BinarySearchTree {
 
 	private Node root;
@@ -53,6 +55,42 @@ public class BinarySearchTree {
 	 */
 	public int height() {
 		return findHeight(root);
+	}
+
+	/**
+	 * Tree traversal pre-order
+	 */
+
+	public void preOrderTraversal() {
+
+		traversePreOrder(root);
+	}
+
+	/**
+	 * Tree traversal in-order
+	 */
+
+	public void inOrderTraversal() {
+
+		traverseInOrder(root);
+	}
+
+	/**
+	 * Tree traversal post-order
+	 */
+
+	public void postOrderTraversal() {
+
+		traversePostOrder(root);
+	}
+
+	/**
+	 * Checks if the tree is Binary search tree
+	 */
+	public boolean isBST() {
+		int MIN_VAL = Integer.MIN_VALUE;
+		int MAX_VAL = Integer.MAX_VALUE;
+		return bstUtil(root, MIN_VAL, MAX_VAL);
 	}
 
 	private Node addNode(int element, Node root) {
@@ -115,4 +153,45 @@ public class BinarySearchTree {
 			return b;
 		}
 	}
+
+	private void traversePreOrder(Node root) {
+		if (root == null) {
+			return;
+		}
+		System.out.print(root.data + " ");
+		traversePreOrder(root.left);
+		traversePreOrder(root.right);
+	}
+
+	private void traverseInOrder(Node root) {
+		if (root == null) {
+			return;
+		}
+		traverseInOrder(root.left);
+		System.out.print(root.data + " ");
+		traverseInOrder(root.right);
+	}
+
+	private void traversePostOrder(Node root) {
+		if (root == null) {
+			return;
+		}
+		traversePostOrder(root.left);
+		traversePostOrder(root.right);
+		System.out.print(root.data + " ");
+
+	}
+
+	/** this will check if the sub tree is also bonary search tree **/
+	private boolean bstUtil(Node root, int minVal, int maxVal) {
+		if (root == null)
+			return true;
+		if (root.data > minVal && root.data < maxVal && bstUtil(root.left, minVal, root.data)
+				&& bstUtil(root.right, root.data, maxVal)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

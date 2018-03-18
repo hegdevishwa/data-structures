@@ -1,22 +1,31 @@
 package datastructures;
 
+import java.util.Scanner;
+
 public class Tester {
 
 	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int arr[] = new int[n];
 
-		BinarySearchTree bst = new BinarySearchTree();
-		bst.insert(7);
-		bst.insert(4);
-		bst.insert(9);
+		int pc = 0;
+		int nc = 0;
+		int zc = 0;
 
-		bst.insert(1);
-		bst.insert(6);
+		for (int i = 0; i < n; i++) {
+			arr[i] = in.nextInt();
+			if (arr[i] > 0) {
+				pc++;
+			} else if (arr[i] < 0) {
+				nc++;
+			} else {
+				zc++;
+			}
+		}
 
-		/*bst.insert(15);
-		bst.insert(18);*/
-
-		System.out.println("IS BST?" + bst.isBST());
-
+		double p = pc / n;
+		System.out.print(p);
 	}
 
 }

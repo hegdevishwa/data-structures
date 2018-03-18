@@ -1,5 +1,6 @@
 package puzzles;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class PlusMinus {
@@ -8,9 +9,9 @@ public class PlusMinus {
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
 		int arr[] = new int[n];
-		int pc = 0;
-		int nc = 0;
-		int zc = 0;
+		float pc = 0;
+		float nc = 0;
+		float zc = 0;
 		for (int arr_i = 0; arr_i < n; arr_i++) {
 			arr[arr_i] = in.nextInt();
 			if (arr[arr_i] > 0) {
@@ -21,10 +22,13 @@ public class PlusMinus {
 				zc++;
 			}
 		}
-		double p = pc/n;
-		System.out.println(pc / n);
-		System.out.println(nc / n);
-		System.out.println(zc / n);
+		float p = pc / n;
+		float ng = nc / n;
+		float z = zc / n;
+		DecimalFormat formatter = new DecimalFormat("#.######");
+		System.out.println(formatter.format(p));
+		System.out.println(formatter.format(ng));
+		System.out.println(formatter.format(z));
 
 	}
 
